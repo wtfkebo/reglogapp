@@ -49,7 +49,11 @@ export default function LoginPage() {
                 return;
             }
 
-            router.push('/dashboard');
+            if (result.token) {
+                localStorage.setItem('auth_token', result.token);
+            }
+
+            window.location.href = 'https://moviesapp-wheat.vercel.app/';
         } catch (error) {
             setServerError('An unexpected error occurred');
         }
